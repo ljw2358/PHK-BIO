@@ -3,104 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHK-BIO | Global Business</title>
+    <title>PHK-BIO | 글로벌 투자 가치</title>
     <style>
-        body { font-family: 'Pretendard', sans-serif; margin: 0; color: #333; line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* 상단 네비게이션 */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #eee; }
-        .logo { font-weight: bold; font-size: 24px; color: #0066ff; }
-        nav a { margin-left: 25px; text-decoration: none; color: #555; font-weight: 500; font-size: 15px; }
-
-        /* 기술 카드 섹션 */
-        .tech-section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 50px 0; }
-        .tech-card { border: 1px solid #eef0f5; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .tech-card h3 { color: #0066ff; margin-bottom: 15px; }
-        .tech-card p { font-size: 14px; color: #666; word-break: keep-all; }
-
-        /* 여백을 확 줄인 블루 섹션 */
-        .blue-section { 
-            background-color: #f8faff; 
-            padding: 40px 0; /* 여백을 대폭 축소 */
-            text-align: center; 
-            border-top: 1px solid #edf2ff;
-            border-bottom: 1px solid #edf2ff;
+        :root {
+            --primary-blue: #0070c0;
+            --bg-gray: #f8f9fa;
+            --text-dark: #333;
         }
-        .blue-section h2 { color: #0056d2; font-size: 32px; margin-bottom: 10px; }
-        .blue-section p { color: #666; font-size: 16px; margin-bottom: 0; }
 
-        /* 한글 사업 전략 섹션 */
-        .strategy-box { 
-            background: #fff; 
-            margin: 30px auto; 
-            padding: 30px; 
-            border-radius: 12px; 
-            border: 1px solid #e0e6ed;
-            max-width: 900px;
+        body {
+            margin: 0;
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #fff;
         }
-        .strategy-box h4 { color: #222; font-size: 20px; margin-top: 0; border-left: 4px solid #0066ff; padding-left: 12px; }
-        .strategy-box p { font-size: 16px; color: #444; text-align: justify; word-break: keep-all; }
 
-        /* 푸터 (이메일 포함) */
-        footer { background: #333; color: #fff; padding: 30px 0; text-align: center; font-size: 14px; }
-        .contact-info { margin-bottom: 10px; color: #bbb; }
-        .contact-info a { color: #fff; text-decoration: none; font-weight: bold; }
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .underline {
+            width: 50px;
+            height: 4px;
+            background-color: #00aaff;
+            margin: 0 auto 30px;
+        }
+
+        /* 핵심 투자 가치 카드 레이아웃 */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; /* 여백 축소 */
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: #666;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        /* 하단 글로벌 비즈니스 섹션 */
+        .global-overview {
+            background-color: var(--bg-gray);
+            padding: 60px 20px;
+        }
+
+        .info-box {
+            background: #fff;
+            border-left: 8px solid var(--primary-blue);
+            padding: 40px;
+            border-radius: 0 15px 15px 0;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+            color: #111;
+        }
+
+        .info-box p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        /* 연락처 섹션 */
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+            font-weight: 600;
+        }
+
+        .contact-info a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .section-title { font-size: 1.6rem; }
+            .info-box { padding: 25px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <div class="logo">PHK-BIO</div>
-        <nav>
-            <a href="#">비전</a>
-            <a href="#">기술소개</a>
-            <a href="#">투자정보</a>
-            <a href="#">문의하기</a>
-        </nav>
-    </header>
+    <section class="section">
+        <h2 class="section-title">핵심 투자 가치</h2>
+        <div class="underline"></div>
+        
+        <div class="card-container">
+            <div class="card">
+                <span class="card-icon">🔬</span>
+                <h3 class="card-title">차세대 정밀 진단</h3>
+                <p class="card-desc">
+                    인공지능(AI) 기반의 차세대 분자 진단 툴을 개발하여, 각종 중증 질환을 초기 단계에서 99.9%의 정확도로 포착합니다. 조기 발견을 통해 생존율을 극대화하는 혁신적인 스크리닝 기술을 제공합니다.
+                </p>
+            </div>
 
-    <section class="tech-section">
-        <div class="tech-card">
-            <h3>정밀 진단</h3>
-            <p>99.9%의 정확도로 초기 단계의 질병을 탐지하는 차세대 분자 진단 도구를 개발하여 질병 예방의 새로운 기준을 제시합니다.</p>
-        </div>
-        <div class="tech-card">
-            <h3>유전자 치료</h3>
-            <p>CRISPR 기반 유전자 편집 및 표적 전달 시스템을 통해 환자 맞춤형 정밀 의료의 혁신을 주도하고 있습니다.</p>
-        </div>
-        <div class="tech-card">
-            <h3>에코-바이오 공정</h3>
-            <p>탄소 배출량을 40% 절감하면서도 고수율 바이오 생산을 유지하는 친환경 제조 공정 기술을 보유하고 있습니다.</p>
+            <div class="card">
+                <span class="card-icon">🧬</span>
+                <h3 class="card-title">혁신 유전자 치료</h3>
+                <p class="card-desc">
+                    CRISPR 유전자 편집 기술과 맞춤형 전달 시스템을 결합하여 난치성 질환의 근본적인 원인을 치료합니다. 개인별 유전체 분석을 통한 정밀 의료로 바이오 산업의 패러다임을 혁명적으로 바꿉니다.
+                </p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🌿</span>
+                <h3 class="card-title">친환경 바이오 공정</h3>
+                <p class="card-desc">
+                    탄소 배출량을 기존 대비 40% 이상 절감하면서도 고수율 생산을 유지하는 그린 제조 프로세스를 확립했습니다. 지속 가능한 성장을 위한 ESG 경영의 핵심 모델로 친환경 바이오 생태계를 선도합니다.
+                </p>
+            </div>
         </div>
     </section>
-</div>
 
-<section class="blue-section">
-    <div class="container">
-        <h2>Global Business Overview</h2>
-        <p>국경을 넘어선 탁월함을 향한 우리의 약속</p>
-    </div>
-</section>
-
-<div class="container">
-    <div class="strategy-box">
-        <h4>[KOREAN] 사업 전략 및 투자 가치</h4>
-        <p>
-            PHK-BIO는 인공지능(AI) 기반의 신약 개발 플랫폼과 정밀 분석 기술을 융합하여 바이오 산업의 패러다임을 전환하고 있습니다. 
-            당사의 핵심 파이프라인은 항암 면역 치료제와 유전체 분석 솔루션으로, 글로벌 시장에서의 기술 수출을 최우선 목표로 하고 있습니다. 
-            지속 가능한 성장을 위해 ESG 경영을 실천하며, 투자자들에게 안정적이고 높은 가치를 환원하는 글로벌 바이오 기업으로 도약하겠습니다.
-        </p>
-    </div>
-</div>
-
-<footer>
-    <div class="container">
-        <p class="contact-info">문의: <a href="mailto:info@phkbio.com">info@phkbio.com</a></p>
-        <p>&copy; 2026 PHK-BIO. All Rights Reserved.</p>
-    </div>
-</footer>
+    <section class="global-overview">
+        <div class="section">
+            <h2 class="section-title" style="color:#222;">글로벌 비즈니스 개요</h2>
+            <p style="color: #666; margin-bottom: 40px;">국경을 넘어선 탁월함을 향한 PHK-BIO의 약속</p>
+            
+            <div class="info-box">
+                <h3>[전략] 사업 목표 및 미래 가치</h3>
+                <p>
+                    PHK-BIO는 인공지능 기반의 신약 개발 플랫폼과 정밀 분석 기술을 융합하여 바이오 산업의 새로운 표준을 제시합니다. 당사의 핵심 파이프라인인 항암 면역 치료제와 유전체 분석 솔루션을 통해 글로벌 시장에서의 기술 수출 및 라이선싱 아웃을 목표로 하고 있습니다. 
+                    <br><br>
+                    우리는 투명한 ESG 경영을 실천하며, 연구개발(R&D)에 대한 지속적인 투자를 통해 투자자들에게 안정적이고 높은 미래 가치를 환원하는 것을 최우선 과제로 삼고 있습니다.
+                </p>
+                
+                <div class="contact-info">
+                    📩 투자 및 비즈니스 문의: <a href="mailto:info@phkbio.com">info@phkbio.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
