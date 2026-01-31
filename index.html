@@ -1,108 +1,292 @@
-도착 언어한국어번역하기
+번역하기
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>혜공 형님의 미래 산업 뱅크</title>
+    <title>PHK-BIO | 글로벌 혁신 바이오 테크놀로지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #00d2ff;
-            --deep-space: #0a0e17;
-            --bio-green: #39ff14;
+            --primary-color: #0052cc;
+            --secondary-color: #00a8ff;
+            --accent-color: #f1c40f;
+            --text-dark: #2d3436;
+            --text-light: #636e72;
+            --bg-light: #f8f9fa;
         }
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--deep-space);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Noto Sans KR'; 
+            line-height: 1.8; 
+            color: var(--text-dark);
             overflow-x: hidden;
         }
-        header {
-            height: 100vh;
+
+        /* 언어 선택 바 */
+        .lang-bar {
+            background: #2c3e50;
+            padding: 5px 5%;
+            text-align: right;
+            font-size: 0.8rem;
+        }
+        .lang-bar a { color: white; margin-left: 15px; text-decoration: none; cursor: pointer; }
+        .lang-bar a:hover { color: var(--secondary-color); }
+
+        /* 네비게이션 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); }
+        .logo span { color: var(--secondary-color); }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: 0.3s; }
+        nav ul li a:hover { color: var(--primary-color); }
+
+        /* 히어로 섹션 - 투자용 문구 */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0, 82, 204, 0.8), rgba(0, 168, 255, 0.6)), 
+                        url('https://images.unsplash.com/photo-1532187875605-1838812fd903?auto=format&fit=crop&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
             text-align: center;
+            color: white;
+            padding: 0 10%;
         }
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: var(--primary-blue);
-        }
-        .warning-text {
-            font-size: 1.5rem;
-            color: #ff0055;
+        .hero h1 { font-size: 4rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero p { font-size: 1.5rem; max-width: 900px; margin-bottom: 30px; font-weight: 300; }
+        .cta-btn {
+            padding: 15px 40px;
+            background: var(--accent-color);
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
             font-weight: bold;
-            border: 2px solid #ff0055;
-            padding: 10px 20px;
-            margin-top: 20px;
-        }
-        .container {
-            padding: 50px 10%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid var(--primary-blue);
+            font-size: 1.1rem;
             transition: 0.3s;
         }
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(0, 210, 255, 0.1);
+        .cta-btn:hover { transform: scale(1.05); background: white; }
+
+        /* 섹션 공통 스타일 */
+        section { padding: 100px 10%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.8rem; color: var(--primary-color); margin-bottom: 15px; }
+        .section-header .line { width: 80px; height: 5px; background: var(--secondary-color); margin: 0 auto; }
+
+        /* 투자 포인트 - 4개국어 지원 설명 */
+        .invest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
-        .card h3 {
-            color: var(--bio-green);
-        }
-        footer {
+        .invest-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             text-align: center;
-            padding: 50px;
-            font-size: 0.9rem;
-            opacity: 0.6;
+            transition: 0.4s;
+            border: 1px solid #eee;
         }
+        .invest-card:hover { transform: translateY(-15px); border-color: var(--secondary-color); }
+        .invest-card i { font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px; }
+        .invest-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .invest-card p { font-size: 0.95rem; color: var(--text-light); text-align: justify; }
+
+        /* 다국어 상세 설명 섹션 */
+        .multi-lang-detail {
+            background: var(--bg-light);
+        }
+        .lang-box {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-left: 10px solid var(--primary-color);
+            border-radius: 0 15px 15px 0;
+        }
+        .rtl { direction: rtl; text-align: right; border-left: none; border-right: 10px solid var(--primary-color); border-radius: 15px 0 0 15px; }
+
+        /* 수치/성과 지표 */
+        .stats {
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 60px 10%;
+            text-align: center;
+        }
+        .stat-item h4 { font-size: 3rem; }
+        .stat-item p { font-size: 1.1rem; opacity: 0.8; }
+
+        /* 푸터 */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 80px 10% 30px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate { animation: fadeIn 1s ease-out forwards; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>BANK UMB</h1>
-        <p>로봇 · 인공태양 · 우주산업 · 파츠뱅크 · 바이오</p>
-        <div class="warning-text">게 썻거라! (STAND ASIDE)</div>
-    </header>
-
-    <div class="container">
-        <div class="card">
-            <h3>ROBOTICS</h3>
-            <p>인간의 한계를 뛰어넘는 지능형 로봇 시스템 솔루션.</p>
-        </div>
-        <div class="card">
-            <h3>ARTIFICIAL SUN</h3>
-            <p>무한한 에너지를 향한 도전, 핵융합 기술의 미래.</p>
-        </div>
-        <div class="card">
-            <h3>SPACE INDUSTRY</h3>
-            <p>지구를 넘어 우주로 뻗어나가는 인류의 새로운 거점.</p>
-        </div>
-        <div class="card">
-            <h3>BIO TECH</h3>
-            <p>유전자 편집과 AI 신약 개발로 여는 무병장수의 시대.</p>
-        </div>
+    <div class="lang-bar">
+        <a onclick="showLang('ko')">KOREAN</a>
+        <a onclick="showLang('en')">ENGLISH</a>
+        <a onclick="showLang('zh')">CHINESE</a>
+        <a onclick="showLang('ar')">ARABIC</a>
     </div>
 
+    <nav>
+        <div class="logo">PHK-<span>BIO</span></div>
+        <ul>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#tech">Technology</a></li>
+            <li><a href="#investment">Investment</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1 class="animate">PHK-BIO Global</h1>
+        <p class="animate">Leading the Future of Biotechnology through Precision Innovation and Sustainable Science.</p>
+        <a href="#investment" class="cta-btn animate">Invest in Future</a>
+    </header>
+
+    <div class="stats">
+        <div class="stat-item"><h4>120+</h4><p>Patents Pending</p></div>
+        <div class="stat-item"><h4>$50M</h4><p>R&D Investment</p></div>
+        <div class="stat-item"><h4>15</h4><p>Global Partners</p></div>
+    </div>
+
+    <section id="vision">
+        <div class="section-header">
+            <h2>Core Investment Value</h2>
+            <div class="line"></div>
+        </div>
+        
+        <div class="invest-grid">
+            <div class="invest-card">
+                <i class="fas fa-microscope"></i>
+                <h3>Advanced Diagnostics</h3>
+                <p>Developing next-generation molecular diagnostic tools that detect diseases with 99.9% accuracy at the earliest stages.</p>
+            </div>
+            <div class="invest-card">
+                <i class="fas fa-dna"></i>
+                <h3>Gene Therapy</h3>
+                <p>Revolutionizing personalized medicine through CRISPR-based genomic editing and targeted delivery systems.</p>
+            </div>
+            <div class="invest-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Eco-Bio Process</h3>
+                <p>Green manufacturing processes that reduce carbon footprint by 40% while maintaining high-yield bioproduction.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="multi-lang-detail" id="tech">
+        <div class="section-header">
+            <h2>Global Business Overview</h2>
+            <p>Our commitment to excellence across borders.</p>
+        </div>
+
+        <div class="lang-box" id="ko">
+            <h3>[KOREAN] 사업 전략 및 투자 가치</h3>
+            <p>PHK-BIO는 인공지능 기반의 신약 개발 플랫폼과 정밀 분석 기술을 융합하여 바이오 산업의 패러다임을 전환하고 있습니다. 당사의 핵심 파이프라인은 항암 면역 치료제와 유전체 분석 솔루션으로, 글로벌 시장에서의 기술 수출을 목표로 하고 있습니다. 지속 가능한 성장을 위해 ESG 경영을 실천하며, 투자자들에게 안정적이고 높은 가치를 환원하는 것을 최우선으로 합니다.</p>
+        </div>
+
+        <div class="lang-box" id="en">
+            <h3>[ENGLISH] Strategic Vision & Investment Opportunity</h3>
+            <p>PHK-BIO is at the forefront of the biotech revolution, integrating AI-driven drug discovery platforms with high-precision analytical technologies. Our primary focus lies in developing immuno-oncology treatments and comprehensive genomic sequencing solutions. We aim to secure global licensing deals and foster international collaborations. Our commitment to ESG principles ensures long-term sustainability and robust returns for our stakeholders.</p>
+        </div>
+
+        <div class="lang-box" id="zh">
+            <h3>[CHINESE] 战略愿景与投资价值</h3>
+            <p>PHK-BIO 站在生物技术革命的前沿，将人工智能驱动的药物研发平台与高精度分析技术相结合。我们的核心重点在于开发免疫肿瘤治疗方案和全面的基因组测序解决方案。我们的目标是获得全球许可协议并促进国际合作。我们对 ESG 原则的承诺确保了长期可持续性，并为我们的股东提供丰厚的回报。</p>
+        </div>
+
+        <div class="lang-box rtl" id="ar">
+            <h3>[ARABIC] الرؤية الاستراتيجية وفرص الاستثمار</h3>
+            <p>تقف PHK-BIO في طليعة ثورة التكنولوجيا الحيوية، حيث تدمج منصات اكتشاف الأدوية المدفوعة بالذكاء الاصطناعي مع تقنيات التحليل عالية الدقة. ينصب تركيزنا الأساسي على تطوير علاجات الأورام المناعية وحلول تسلسل الجينوم الشاملة. نحن نهدف إلى تأمين صفقات الترخيص العالمية وتعزيز التعاون الدولي. إن التزامنا بمبادئ الحوكمة البيئية والاجتماعية والمؤسسية يضمن الاستدامة على المدى الطويل وعوائد قوية لأصحاب المصلحة لدينا.</p>
+        </div>
+    </section>
+
+    <section id="investment">
+        <div class="section-header">
+            <h2>Investor Relations</h2>
+            <div class="line"></div>
+        </div>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p>PHK-BIO는 2026년 하반기 IPO를 목표로 Series C 투자 라운드를 진행 중입니다. 당사는 글로벌 바이오 시장의 선두주자로서 기술적 우위뿐만 아니라 시장의 요구를 정확히 관통하는 상용화 전략을 보유하고 있습니다. 귀하의 투자는 단순한 자본 투입을 넘어 인류의 생명 연장과 질병 정복을 위한 동행이 될 것입니다.</p>
+            <br>
+            <a href="mailto:invest@phk-bio.com" class="cta-btn">IR 자료 요청하기</a>
+        </div>
+    </section>
+
     <footer>
-        &copy; 2026 혜공 형님 & 삐니. All Rights Reserved.
+        <div class="footer-content">
+            <div>
+                <h3>PHK-BIO</h3>
+                <p>Global Bio-Tech Leader<br>Building a Healthier Tomorrow through Science.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p>Research</p>
+                <p>Pipeline</p>
+                <p>Governance</p>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p>Email: contact@phk-bio.com</p>
+                <p>Tel: +82-2-1234-5678</p>
+                <p>Seoul, Republic of Korea</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 PHK-BIO CO., LTD. All Rights Reserved. | Created for 혜공 형님 by 삐니
+        </div>
     </footer>
+
+    <script>
+        function showLang(langId) {
+            // 모든 언어 박스 숨기기
+            document.querySelectorAll('.lang-box').forEach(box => {
+                box.style.display = 'none';
+            });
+            // 선택한 언어 박스만 보이기
+            document.getElementById(langId).style.display = 'block';
+            // 부드러운 이동
+            document.getElementById(langId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
